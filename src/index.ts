@@ -6,9 +6,14 @@ import ytdl from "ytdl-core";
 
 const app = express();
 
+app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 app.use(compression());
+
+app.get("/", (req, res) => {
+  res.send("Hello World!").status(200);
+});
 
 app.get("/check-download", async (req, res, next) => {
   try {
